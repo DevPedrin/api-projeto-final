@@ -53,9 +53,9 @@ export async function changePassword(matricula, old_password, new_password) {
       }
     });
 
-    if(res.ok) {
+    if(res) {
       alert("Senha alterada com sucesso! Faça login.");
-      window.location.href = "./index.html";
+      window.location.href = "/";
     }
     
   } catch(err) {
