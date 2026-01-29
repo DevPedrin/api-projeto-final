@@ -1,0 +1,83 @@
+/* ===== RESET BÁSICO ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* ===== LAYOUT GERAL ===== */
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9fafb;
+}
+
+/* Conteúdo principal cresce e empurra o footer */
+main.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* ← não centraliza verticalmente */
+  padding-top: 80px;       /* ← controla o quão alto fica */
+}
+/* ===== FORM ===== */
+#change-password-form {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== INPUTS ===== */
+#change-password-form input {
+  height: 38px;
+  padding: 8px 10px;
+  width: 100%;
+
+  border-radius: 6px;
+  border: 1px solid #cfd8e3;
+  box-sizing: border-box;
+
+  font-size: 14px;
+}
+
+#change-password-form input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+/* ===== BOTÃO ===== */
+#change-password-form input[type="submit"] {
+  margin-top: 10px;
+  height: 42px;
+
+  border-radius: 6px;
+  border: none;
+
+  background-color: #1396e2;
+  color: white;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+#change-password-form input[type="submit"]:hover {
+  background-color: #0f7fc2;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 14px;
+  background-color: #f1f3f5;
+  font-size: 14px;
+  color: #555;
+}

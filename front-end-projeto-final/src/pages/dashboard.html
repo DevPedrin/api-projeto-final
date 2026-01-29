@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+    <nav class="sidebar">  
+       
+    </nav>
+
+    <main>
+        <div class="content">
+    <div class="dashboard">
+        <div class="card card-users">
+            <span class="label">Usuários</span>
+            <span class="value" id="totalUsuarios">0</span>
+        </div>
+
+        <div class="card">
+            <span class="label">Produtos</span>
+            <span class="value" id="totalProdutos">0</span>
+        </div>
+
+        <div class="card">
+            <span class="label">Entradas</span>
+            <span class="value" id="totalEntradas">0</span>
+        </div>
+
+        <div class="card">
+            <span class="label">Saídas</span>
+            <span class="value" id="totalSaidas">0</span>
+        </div>
+    </div>
+
+    <!-- 🔴 ISSO ESTAVA FALTANDO -->
+    <div id="chart"  class="chart-container"></div>
+</div>
+
+        <footer><p>© 2026 <span style="font-weight: bold;"> — Projeto Final</span></p></footer>
+    </main>
+    
+
+    
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+
+</body>
+</html>

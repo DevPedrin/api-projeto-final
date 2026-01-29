@@ -1,0 +1,8 @@
+{
+    "curretUserId": 1, 
+    "cpf": "34592048365",
+    "email": "exemple@email.com",
+    "password": "senha123",
+    "role_id": "1",
+    "extra_permissions": [1,3,5,6]
+}

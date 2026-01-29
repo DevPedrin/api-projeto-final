@@ -1,0 +1,130 @@
+/* =========================
+   CONTAINER DO FORM/CONTENT
+========================= */
+form, input, select, .btn {
+  box-sizing: border-box;
+}
+
+
+main {
+  margin-left: 250px;
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+.content {
+  width: 420px;               /* diminui largura */
+  margin: 30px auto;
+  padding: 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* =========================
+   TITULO
+========================= */
+
+h1 {
+  margin-bottom: 32px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  text-decoration: none;
+  color: #2563eb;
+  margin-right: 8px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   FORM
+========================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+  height: auto;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 9px 10px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+
+.btn {
+  width: 100%;                 /* MESMA largura dos inputs */
+  padding: 10px;
+  background: #00A4F0;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  background: #1e40af;
+}
+
+/* =========================
+   INPUT SEARCH (se tiver)
+========================= */
+
+#search {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* =========================
+   BOTÃO REFRESH
+========================= */
+
+#refresh {
+  width: 100%;                /* fica padrão também */
+  padding: 10px;
+  border-radius: 6px;
+  background: #16a34a;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+#refresh:hover {
+  background: #15803d;
+}
+
+/* resto da tabela e paginação continua igual */

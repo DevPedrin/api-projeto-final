@@ -1,0 +1,155 @@
+/* =========================
+   HTML E BODY
+========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
+}
+
+/* Corpo principal */
+body {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR FIXA (Estilo Dark/Blue)
+========================= */
+.sidebar {
+  position: fixed;      /* Mantido fixo conforme original */
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #1a1a1a;  /* MUDANÇA: Preto fosco (Visual Admir) */
+  color: #e5e5e5;       /* Texto claro */
+  padding: 20px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+  z-index: 1000;        /* Garante que fique acima de tudo */
+}
+
+/* =========================
+   MENU DE NAVEGAÇÃO (Links)
+========================= */
+.sidebar ul {
+  list-style: none; /* Remove as bolinhas */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#btn-logout {
+  background-color: #FE4242;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
+  margin-top: auto;
+}
+
+.sidebar li {
+  margin-bottom: 8px; /* Espaço entre os itens */
+  width: 100%;
+}
+
+/* Estilo do Link (Botão) */
+.sidebar a {
+  display: block;           /* Ocupa a largura toda */
+  padding: 12px 15px;       /* Área de clique confortável */
+  color: #aaaaaa;           /* Cor padrão (cinza) */
+  text-decoration: none;
+  border-radius: 6px;       /* Cantos arredondados */
+  transition: all 0.3s ease;/* Animação suave */
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Efeito ao passar o mouse */
+.sidebar a:hover {
+  background-color: #333333;      /* Fundo mais claro */
+  color: #ffffff;                 /* Texto branco */
+  padding-left: 20px;             /* Move levemente para a direita */
+  border-left: 4px solid #00a0e3; /* Detalhe Azul na esquerda */
+}
+
+/* =========================
+   USER INFO NA SIDEBAR
+========================= */
+.constainer-user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 5px;
+  border-bottom: 1px solid #333; /* Linha separadora sutil */
+  margin-bottom: 10px;
+}
+
+.sidebar .user-icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding: 2px; /* Borda branca fina */
+  object-fit: cover;
+}
+
+.user-infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nome-txt {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.cargo-txt {
+  font-size: 0.85rem;
+  color: #00a0e3; /* Cargo em azul destaque */
+  margin: 0;
+}
+
+/* =========================
+   MAIN (CONTEÚDO)
+========================= */
+main {
+  margin-left: 250px;   /* Mantido para não quebrar o layout fixo */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - 250px); /* Garante que ocupe o resto da tela */
+}
+
+/* Conteúdo principal */
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* Títulos das páginas */
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+  color: #666;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+}

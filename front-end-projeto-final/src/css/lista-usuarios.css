@@ -1,0 +1,153 @@
+/* =========================
+   CONTAINER DO FORM/CONTENT
+========================= */
+
+
+main {
+  margin-left: 250px;   /* espaça da sidebar */
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+.content {
+  margin: 30px auto;       /* centraliza e dá espaço em cima */
+  padding: 20px;           /* menos padding que antes */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08); /* sombra mais leve */
+  font-size: 14px;         /* diminui tamanho da fonte do form */
+  word-wrap: break-word;   /* evita quebra estranha */
+}
+
+/* =========================
+   TITULO
+========================= */
+h1 {
+  margin-bottom: 40px;
+  font-size: 20px;        /* menor que antes */
+}
+
+/* =========================
+   LINKS
+========================= */
+.link-criar-user {
+  text-decoration: none;
+  color: #2563eb;
+  margin-right: 8px;
+  font-weight: 500;
+  font-size: 17px;        /* fonte menor */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   INPUTS DE BUSCA
+========================= */
+#search {
+  width: 100%;            /* ocupa todo espaço disponível */
+  padding: 8px;           /* menos padding */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* =========================
+   BOTÃO DE REFRESH
+========================= */
+#refresh {
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+#refresh:hover {
+  background: #15803d;
+}
+
+/* =========================
+   TABELA
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;         /* fonte menor da tabela */
+}
+
+th {
+  background: #f1f5f9;
+  padding: 8px;           /* menos padding */
+  text-align: left;
+}
+
+td {
+  padding: 8px;           /* menos padding */
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+  background: #e7e7e7de;
+}
+
+/* =========================
+   BOTOES DENTRO DA TABELA
+========================= */
+.bnt {
+  padding: 5px 10px;      /* menor padding */
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;        /* fonte menor */
+}
+
+.edit {
+  background: #00A4F0;
+  color: white;
+}
+
+.delete {
+  background: #dc2626;
+  color: white;
+}
+
+.edit:hover {
+  background: #1d4ed8;
+}
+
+.delete:hover {
+  background: #b91c1c;
+}
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+#pagination {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#pagination button {
+  margin: 0 3px;
+  padding: 4px 8px;        /* menor padding */
+  border-radius: 5px;
+  background: #e5e7eb;
+  font-size: 12px;
+}
+
+#pagination button.active {
+  background: #2563eb;
+  color: white;
+}

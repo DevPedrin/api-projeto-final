@@ -1,0 +1,109 @@
+/* =========================
+   RESET + BASE
+========================= */
+input, select, textarea, button {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* =========================
+   MAIN / CONTENT
+========================= */
+main {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+}
+
+.content {
+  width: 420px;
+  margin: 90px auto 30px; 
+  padding: 22px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+h1 {
+  position: fixed;
+  top: 20px;
+  left: 270px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+/* =========================
+   FORM
+========================= */
+.create-move {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Inputs padrão */
+.create-move input,
+.create-move select,
+.create-move textarea {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+/* Campo desabilitado (nome do produto) */
+.create-move input:disabled {
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Textarea */
+.create-move textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+#submit-input {
+  margin-top: 8px;
+  padding: 10px;
+  background: #22c55e; /* Verde padrão de ação */
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#submit-input:hover {
+  background: #16a34a;
+}
+
+/* =========================
+   SELECT (ENTRADA / SAÍDA)
+========================= */
+#type-move-input {
+  font-weight: 600;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: auto;
+}

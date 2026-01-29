@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/criar-usuario.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <!-- sidebar vazia, sempre fora de tudo -->
+    </nav>
+
+    <main>
+         <h1>Criar Novo Usuário</h1>
+        <div class="content">
+            <form action="" id="create-user-form">
+            <div class="input-container">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" required>
+            </div>
+            <div class="input-container">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" required>
+            </div>
+            <div class="input-container">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" required>
+            </div>
+            <div class="input-container">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="input-container">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" required>
+            </div>
+            <div class="input-container">
+                <label for="cargo">Cargo:</label>
+                <select name="cargo" id="cargo" required>
+                    <option value="" disabled selected>Selecione o Cargo</option>
+                    <option value="1">Almoxarife</option>
+                    <option value="2">Auxiliar de Estoque</option>
+                    <option value="3">Estoquista</option>
+                    <option value="4">ADM</option>
+                    <option value="5">TI</option>
+                    <option value="6">Supervisor de Estoque</option>
+                </select>
+            </div>
+
+            <div id="input-container">
+                <button type="submit" class="btn">Cadastrar</button>
+            </div>
+        </form>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <span style="font-weight: bold;">Samuel</span></p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+     <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import { createUser } from "../api/users.js";
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("nome").value;
+            const lastName = document.getElementById("sobrenome").value;
+            const cpf = document.getElementById("cpf").value;
+            const email = document.getElementById("email").value;
+            const telefone = document.getElementById("telefone").value;
+            const roleId = document.getElementById("cargo").value;
+
+            const data = {
+                first_name: firstName,
+                last_name: lastName,
+                cpf: cpf,
+                email: email,
+                telefone: telefone,
+                role_id: parseInt(roleId, 10)
+            };
+
+            try {
+                const response = await createUser(data);
+                const u = response.data;
+                if(response) {
+                    console.log("Usuário criado com sucesso!", response.data);
+                    alert(`
+                        Matrícula: ${u.matricula}
+                        Senha temporária: ${u.password}
+                    `);
+                } else {
+                    console.error("Erro ao criar usuário:", response.error || response.data);
+                    alert("Erro ao criar usuário!");
+                }
+            } catch (error) {
+                console.error("Erro na requisição:", error.message);
+                alert("Erro na requisição. Tente novamente.");
+            }
+        }
+
+        document.getElementById("create-user-form").addEventListener("submit", handleFormSubmit);
+    </script>
+</body>
+</html>

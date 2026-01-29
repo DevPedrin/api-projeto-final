@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./src/css/login.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="login-container">
+            <h1>LOGIN</h1>
+            <form id="loginForm">
+                <label for="user-input">Matricula</label>
+                <input type="text" id="user-input" required placeholder="Digite sua matricula">
+
+                <label for="password-input">Senha</label>
+                <input type="password" id="password-input" required placeholder="Digite sua senha">
+
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 — criado por <strong>Trync</strong></p>
+    </footer>
+
+    <script src="./config.js"></script>
+    <script type="module">
+        import { login } from "./src/api/auth.js";
+
+        document.getElementById('loginForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const user = document.getElementById('user-input').value;
+            const password = document.getElementById('password-input').value;
+
+            login(user, password);
+        });
+    </script>
+
+</body>
+</html>

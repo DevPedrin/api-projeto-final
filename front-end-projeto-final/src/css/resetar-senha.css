@@ -1,0 +1,65 @@
+/**/
+
+#change-password-form {
+  width: 100%;
+  max-width: 420px;
+
+  transform: translateX(80px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+
+#change-password-form label {
+  font-size: 14px;
+}
+
+#change-password-form input {
+  height: 38px;
+  padding: 8px 10px;
+  width: 100%;
+
+  margin-bottom: 6px;
+
+  border-radius: 6px;
+  border: 1px solid #cfd8e3;
+  box-sizing: border-box;
+
+  font-size: 14px;
+}
+
+#change-password-form input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+#change-password-form button,
+#change-password-form input[type="submit"] {
+  margin-top: 10px;
+  height: 42px;
+
+  border-radius: 6px;
+  border: none;
+
+  background-color: #1396e2;
+  color: white;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+#change-password-form button:hover,
+#change-password-form input[type="submit"]:hover {
+  background-color: #0f7fc2;
+}

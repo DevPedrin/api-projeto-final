@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Dados</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <link rel="stylesheet" href="../css/meus-dados.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        </nav>
+
+    <main>
+        <div class="content">
+            <h1>Meus Dados</h1>
+
+            <div class="actions">
+                <a href="../pages/dashboard.html">← Início</a>
+                <a href="../pages/editar-meus-dados.html" class="btn-edit">Editar meus dados</a>
+            </div>
+
+            <div id="user-container">Carregando...</div>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <span style="font-weight: bold;">Wanderson</span></p>
+        </footer>
+    </main>
+
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import { getMe } from "../api/users.js";
+
+        async function loadData() {
+            try {
+                const response = await getMe();
+                const data = response.data || response; 
+
+                document.getElementById("user-container").innerHTML = `
+                    <table class="vertical-table">
+                        <tbody>
+                            <tr>
+                                <th>Nome Completo</th>
+                                <td>${data.first_name} ${data.last_name}</td>
+                            </tr>
+                            <tr>
+                                <th>Cargo / Função</th>
+                                <td>${data.role_name || 'Usuário'}</td>
+                            </tr>
+                            <tr>
+                                <th>E-mail</th>
+                                <td>${data.email}</td>
+                            </tr>
+                            <tr>
+                                <th>Matrícula</th>
+                                <td>${data.matricula || '---'}</td>
+                            </tr>
+                            <tr>
+                                <th>CPF</th>
+                                <td>${data.cpf || '---'}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefone</th>
+                                <td>${data.telefone || '---'}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                console.error("Erro:", error);
+                document.getElementById("user-container").innerHTML = "<p>Erro ao carregar dados.</p>";
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

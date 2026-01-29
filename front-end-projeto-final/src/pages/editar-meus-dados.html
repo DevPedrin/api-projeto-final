@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/editar-meus-dados.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <!-- sidebar vazia, sempre fora de tudo -->
+    </nav>
+
+    <main>
+        <div class="content">
+            <h1 class="page-title-txt">Editar Meu Perfil</h1>
+            <div id="form" class="form-container"></div>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <span style="font-weight: bold;">Lara</span></p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import { getMe, updateUser } from "../api/users.js";
+
+        async function init() {
+            const response = await getMe();
+
+            if (!response || !response.ok) {
+                document.getElementById("form").innerHTML = "<p>Erro ao carregar informações</p>";
+                return;
+            }
+
+            const user = response.data;
+
+            document.getElementById("form").innerHTML = `
+                <div class="campo">
+                    <label>Nome</label>
+                    <input id="first_name" value="${user.first_name}">
+                </div>
+
+                <div class="campo">
+                    <label>Sobrenome</label>
+                    <input id="last_name" value="${user.last_name}">
+                </div>
+
+                <div class="campo">
+                    <label>Telefone</label>
+                    <input id="telefone" value="${user.telefone ?? ''}">
+                </div>
+
+                <div class="campo">
+                    <label>Email</label>
+                    <input id="email" value="${user.email}">
+                </div>
+
+                <button id="salvarBtn" class="btn-salvar">Salvar Alterações</button>
+            `;
+
+            document.getElementById("salvarBtn").onclick = async () => {
+                const data = {
+                    first_name: document.getElementById("first_name").value,
+                    last_name: document.getElementById("last_name").value,
+                    telefone: document.getElementById("telefone").value,
+                    email: document.getElementById("email").value
+                };
+
+                const res = await updateUser(user.id, data);
+
+                if (!res.ok) {
+                    alert("Erro ao salvar: " + res.message);
+                    return;
+                }
+
+                alert("Perfil atualizado!");
+            };
+        }
+
+        init();
+    </script>
+</body>
+</html>

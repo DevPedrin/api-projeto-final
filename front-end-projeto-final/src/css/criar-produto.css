@@ -1,0 +1,112 @@
+/* =========================
+   RESET + BASE
+========================= */
+form, input, select, button {
+  box-sizing: border-box;
+}
+
+/* =========================
+   MAIN / CONTENT
+========================= */
+main {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+.content {
+  width: 420px;
+  margin: 30px auto;
+  padding: 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+/* =========================
+   TITULO
+========================= */
+h1 {
+  margin-bottom: 28px;
+  margin-left: 4px;
+  font-size: 20px;
+  position: fixed;
+}
+
+/* =========================
+   FORM
+========================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 13px;
+  gap: 2px;          /* diminuiu */
+}
+
+
+input,
+select {
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: #00A4F0;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: 0.25s;
+}
+
+button[type="submit"]:hover {
+  background: #1e40af;
+}
+
+/* =========================
+   LINK VOLTAR
+========================= */
+a {
+  text-decoration: none;
+  color: #2563eb;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 12px 0;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: auto;
+}

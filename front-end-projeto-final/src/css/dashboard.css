@@ -1,0 +1,38 @@
+#chart {
+    height: 400px;
+    margin-top: 100px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    width: 90;
+    max-width: 900px;
+}
+
+.card {
+    background: linear-gradient(135deg, #5f4dee, #7b68ee);
+    color: #ffffff;
+    height: 100px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* centraliza no eixo Y */
+    align-items: center;       /* centraliza no eixo X */
+
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.value {
+    font-size: 48px;
+    font-weight: 700;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/criar-movimentacao.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <!-- sidebar vazia, sempre fora de tudo -->
+    </nav>
+
+    <main>
+        <h1>Movimentar Produto</h1>
+
+        <div class="content">
+            <form  class="create-move">
+                <!-- Nome vem da pagina de lista de produtos setar em value-->
+                <input type="text" disabled id="prod-name" value="">
+                <select name="" id="type-move-input">
+                    <option value="entrada" selected>Entrada</option>
+                    <option value="saida">Saida</option>
+                </select>
+
+                <input type="number" name="qtd" id="qtd-input" placeholder="Qauntidade">
+
+                <textarea name="obs" id="obs-input" placeholder="obs/motivo"></textarea>
+
+                <input type="submit" value="Cadastrar" id="submit-input">
+            </form>
+        </div>
+
+        <footer>s</footer>
+    </main>
+
+
+
+    <!-- Scripts -->
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import {createMovimentacao} from "../api/movimentacoes.js";
+        const hash = window.location.hash.substring(1); 
+        const params = new URLSearchParams(hash);
+
+        const id = params.get("id");
+        const nome = params.get("nome");
+
+        document.getElementById("prod-name").value = nome;
+        
+
+        document.querySelector('.create-move').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const tipo = document.getElementById('type-move-input').value;
+    const quantidade = Number(document.getElementById('qtd-input').value);
+    const obs = document.getElementById('obs-input').value;
+
+    try {
+        const payload = {
+            produto_id: Number(id),
+            tipo,
+            quantidade,
+            observacao: obs
+        };
+
+        const resp = await createMovimentacao(payload);
+
+        if(resp.ok) {
+            alert("Movimentação registrada!");
+            window.location.href = "lista-produtos.html"; // ou outra
+        } else {
+            alert("Erro ao registrar movimentação!");
+        }
+
+    } catch(err) {
+        console.error(err);
+        alert("Erro inesperado!");
+    }
+});
+    </script>
+</body>
+</html>

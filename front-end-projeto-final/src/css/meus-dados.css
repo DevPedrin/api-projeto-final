@@ -1,0 +1,144 @@
+/* ============================================================
+   1. LAYOUT GERAL
+   ============================================================ */
+:root {
+    --bg-sidebar: #1a1a1a;
+    --text-sidebar: #e5e5e5;
+    --primary: #00a0e3;
+    --primary-hover: #008ac4;
+    --bg-body: #ffffff;
+    --text-dark: #333333;
+    --border-table: #e0e0e0;
+    --bg-header: #f8f9fa; /* Cinza bem claro para o rótulo */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+}
+
+/* ============================================================
+   2. SIDEBAR
+   ============================================================ */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    color: var(--text-sidebar);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 15px;
+    color: #aaaaaa;
+    text-decoration: none;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background-color: #333333;
+    color: #ffffff;
+    border-left: 3px solid var(--primary);
+}
+
+/* ============================================================
+   3. CONTEÚDO
+   ============================================================ */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    max-width: 800px; /* Largura menor fica mais elegante para tabela vertical */
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.actions {
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.actions a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--primary);
+}
+
+.actions a:hover { text-decoration: underline; }
+
+.actions a.btn-edit {
+    background-color: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.actions a.btn-edit:hover { background-color: var(--primary-hover); text-decoration: none; }
+
+/* ============================================================
+   4. TABELA VERTICAL (Estilo Ficha)
+   ============================================================ */
+.vertical-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border-table);
+    font-size: 1rem;
+}
+
+/* Coluna da Esquerda (Rótulos) */
+.vertical-table th {
+    background-color: var(--bg-header);
+    color: #444;
+    font-weight: 600;
+    text-align: left; /* Alinhado à esquerda fica mais moderno */
+    padding: 15px 20px;
+    width: 30%; /* Ocupa 30% da largura */
+    border-bottom: 1px solid var(--border-table);
+    border-right: 1px solid var(--border-table);
+}
+
+/* Coluna da Direita (Valores) */
+.vertical-table td {
+    background-color: #fff;
+    color: #333;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-table);
+}
+
+/* Remove borda da última linha para ficar limpo */
+.vertical-table tr:last-child th, 
+.vertical-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ============================================================
+   5. RODAPÉ
+   ============================================================ */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #888;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+}

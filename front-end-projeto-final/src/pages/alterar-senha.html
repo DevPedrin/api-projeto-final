@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar senha</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/alterar-senha.css">
+</head>
+<body>
+    <main class="content">
+        <form id="change-password-form">
+            <input type="text" id="matricula" placeholder="sua matrícula">
+            <input type="password" id="old-password-input" placeholder="senha atual" required>
+            <input type="password" id="new-password-input" placeholder="nova senha" required>
+            <input type="submit" value="Alterar Senha">
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2026 — criado por <strong>Jose Antonio</strong></p>
+    </footer>
+
+
+    <script src="/config.js"></script>
+    <script type="module">
+        import {changePassword} from "../api/auth.js";
+
+        document.getElementById('change-password-form')
+          .addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const matricula = document.getElementById('matricula').value;
+            const old_password = document.getElementById('old-password-input').value;
+            const new_password = document.getElementById('new-password-input').value;
+
+            changePassword(matricula, old_password, new_password);
+        });
+    </script>
+
+</body>
+</html>

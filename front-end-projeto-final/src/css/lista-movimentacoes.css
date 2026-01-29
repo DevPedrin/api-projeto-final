@@ -1,0 +1,112 @@
+/* =================================
+   CONTAINER DA LISTAGEM (MOVIMENTAÇÕES)
+================================= */
+
+.content.wide {
+  width: 95%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+/* =================================
+   TÍTULO
+================================= */
+
+.content.wide h1 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+/* =================================
+   ÁREA DE FILTROS / AÇÕES
+================================= */
+
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+/* Botão de relatório */
+#btn-relatorio-mensal {
+  background-color: #22C55E; /* Indigo */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#btn-relatorio-mensal:hover {
+  background-color: #1c9147;
+}
+
+/* =================================
+   TABELA DE MOVIMENTAÇÕES
+================================= */
+
+.tabela-mov {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.tabela-mov th {
+  background: #f1f5f9;
+  padding: 8px;
+  text-align: left;
+  color: #374151;
+  font-weight: 600;
+}
+
+.tabela-mov td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+/* Hover da linha */
+.tabela-mov tr:hover {
+  background: #e7e7e7de;
+}
+
+/* =================================
+   DESTAQUE PARA TIPOS DE MOVIMENTAÇÃO
+   (opcional, mas fica bem bonito)
+================================= */
+
+.tabela-mov td:nth-child(3) {
+  font-weight: bold;
+}
+
+/* Entrada */
+.tabela-mov td:nth-child(3):contains("ENTRADA") {
+  color: #16a34a;
+}
+
+/* Saída */
+.tabela-mov td:nth-child(3):contains("SAÍDA") {
+  color: #dc2626;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #6b7280;
+}

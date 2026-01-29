@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Movimentações</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/lista-movimentacoes.css">
+</head>
+<body>
+    <nav class="sidebar"></nav>
+
+    <main>
+        <div class="content wide">
+            <h1>Movimentações do Estoque</h1>
+
+            <div class="filters">
+                <button id="btn-relatorio-mensal">Gerar relatório</button>
+            </div>
+
+            <table class="tabela-mov">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Produto</th>
+                        <th>Tipo</th>
+                        <th>Quantidade</th>
+                        <th>Usuário</th>
+                        <th>Observação</th>
+                    </tr>
+                </thead>
+                <tbody id="mov-body"></tbody>
+            </table>
+        </div>
+
+        <footer>© 2026 — criado por Mathz</footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import { getAllMovimentacoes } from "../api/movimentacoes.js";
+
+        const tbody = document.getElementById("mov-body");
+
+        // Carrega todas movimentações
+        async function carregarMovimentacoes() {
+            const res = await getAllMovimentacoes();
+            tbody.innerHTML = "";
+
+            if (!res.ok) return;
+
+            res.data.forEach(m => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${new Date(m.created_at).toLocaleString()}</td>
+                    <td>${m.produto}</td>
+                    <td>${m.tipo}</td>
+                    <td>${Math.trunc(Number(m.quantidade))}</td>
+                    <td>${m.usuario}</td>
+                    <td>${m.observacao ?? ''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Botão de relatório
+        document.getElementById("btn-relatorio-mensal").addEventListener("click", () => {
+    const token = localStorage.getItem("authToken");
+    fetch("http://localhost:8080/api/relatorios/mensal", {
+        headers: { "Authorization": `Bearer ${token}` }
+    })
+    .then(res => res.blob())
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "relatorio-mensal.pdf";
+        a.click();
+        window.URL.revokeObjectURL(url);
+    })
+    .catch(err => alert("Erro ao gerar relatório: " + err));
+});
+
+        // Inicializa
+        carregarMovimentacoes();
+    </script>
+</body>
+</html>

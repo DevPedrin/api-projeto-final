@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/editar-produto.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <!-- sidebar vazia, sempre fora de tudo -->
+    </nav>
+
+    <main>
+        <div class="content">
+            <h1>Editar Produto</h1>
+
+            <form id="edit-form" style="display:none;">
+                <label>Nome: <input type="text" name="nome" required></label><br><br>
+                <label>Descrição: <input type="text" name="descricao" required></label><br><br>
+                <label>Unidade de Medida: <input type="text" name="unidade_medida" required></label><br><br>
+                <label>Estoque Atual: <input type="number" step="0.001" name="estoque_atual" required></label><br><br>
+                <label>Fila: <input type="text" name="fila"></label><br><br>
+                <label>Prateleira: <input type="text" name="prateleira"></label><br><br>
+                <label>Preço: <input type="number" step="0.01" name="preco" required></label><br><br>
+                <label>Ativo: 
+                    <select name="ativo">
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                </label><br><br>
+                <label>Fabricante: <input type="text" name="fabricante_nome" required></label><br><br>
+                <label>Fornecedor: <input type="text" name="fornecedor_nome"></label><br><br>
+
+                <button type="submit">Salvar</button>
+            </form>
+
+            <p id="loading">Carregando...</p>
+
+            <br>
+            <a href="lista-produtos.html">Voltar</a>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <span style="font-weight: bold;">Jose Antonio</span></p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module">
+        import { getProductById, updateProduct } from "../api/products.js";
+
+        const form = document.getElementById("edit-form");
+        const loading = document.getElementById("loading");
+
+        
+        const hash = new URLSearchParams(window.location.hash.substring(1));
+        const id = Number(hash.get("id"));
+
+        if (!id) {
+            alert("ID não informado");
+            window.location.href = "lista-produtos.html";
+        }
+
+        async function loadProduct() {
+            try {
+                const res = await getProductById(id);
+
+                if (!res.ok) {
+                    alert("Erro ao carregar produto");
+                    window.location.href = "lista-produtos.html";
+                    return;
+                }
+
+                const prod = res.data;
+
+                form.elements.nome.value = prod.nome ?? "";
+                form.elements.descricao.value = prod.descricao ?? "";
+                form.elements.unidade_medida.value = prod.unidade_medida ?? "";
+                form.elements.estoque_atual.value = prod.estoque_atual ?? "";
+                form.elements.fila.value = prod.fila ?? "";
+                form.elements.prateleira.value = prod.prateleira ?? "";
+                form.elements.preco.value = prod.preco ?? "";
+                form.elements.ativo.value = prod.ativo ? "true" : "false";
+                form.elements.fabricante_nome.value = prod.fabricante_nome ?? "";
+                form.elements.fornecedor_nome.value = prod.fornecedor_nome ?? "";
+
+                loading.style.display = "none";
+                form.style.display = "block";
+
+            } catch (err) {
+                alert("Erro ao carregar produto");
+                console.error(err);
+            }
+        }
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const fd = new FormData(form);
+
+            const payload = {
+                nome: fd.get("nome"),
+                descricao: fd.get("descricao"),
+                unidade_medida: fd.get("unidade_medida"),
+                estoque_atual: Number(fd.get("estoque_atual")),
+                fila: fd.get("fila"),
+                prateleira: fd.get("prateleira"),
+                preco: Number(fd.get("preco")),
+                ativo: fd.get("ativo") === "true",
+                fabricante_nome: fd.get("fabricante_nome"),
+                fornecedor_nome: fd.get("fornecedor_nome")
+            };
+
+            try {
+                const res = await updateProduct(id, payload);
+
+                if (!res.ok) {
+                    alert(`Erro: ${res.error?.publicMessage || "Falha ao atualizar"}`);
+                    return;
+                }
+
+                window.location.href = "lista-produtos.html";
+            } catch (err) {
+                alert("Erro ao salvar alterações");
+                console.error(err);
+            }
+        });
+
+        loadProduct();
+    </script>
+</body>
+</html>

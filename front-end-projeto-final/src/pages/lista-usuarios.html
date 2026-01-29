@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/lista-usuarios.css">
+</head>
+<body>
+    <nav class="sidebar"></nav>
+
+    <main>
+        <div class="content">
+            <h1 class="page-title-txt">Lista de Usuários</h1>
+            <a href="../pages/criar-usuario.html" class="link-criar-user">
+                Criar novo usuário
+            </a>
+
+            <div id="list"></div>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <strong>Alesandra</strong></p>
+        </footer>
+    </main>
+
+    <!-- Sidebar -->
+    <script type="module" src="../js/sidebar.js"></script>
+
+    <!-- Script principal -->
+    <script src="/config.js"></script>
+    <script type="module">
+        import { getAllUsers, deleteUser } from "../api/users.js";
+        import { resetPassword } from "../api/auth.js";
+
+        async function loadUsers() {
+            const response = await getAllUsers();
+
+            if (!response || !response.data) {
+                document.getElementById("list").innerHTML =
+                    "<p>Erro ao carregar dados</p>";
+                return;
+            }
+
+            const users = response.data;
+
+            let html = `
+                <table border="1" cellpadding="5">
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Matrícula</th>
+                        <th>Email</th>
+                        <th>Cargo</th>
+                        <th>Ações</th>
+                    </tr>
+            `;
+
+            for (const u of users) {
+                html += `
+                    <tr>
+                        <td>${u.first_name} ${u.last_name}</td>
+                        <td>${u.cpf}</td>
+                        <td>${u.matricula}</td>
+                        <td>${u.email}</td>
+                        <td>${u.role_name}</td>
+                        <td>
+                            <button class="bnt edit" onclick="editar(${u.id})">
+                                Editar
+                            </button>
+
+                            <button class="bnt delete" onclick="excluir(${u.id})">
+                                Excluir
+                            </button>
+
+                            <button class="bnt reset"
+                                onclick="resetarSenha('${u.matricula}')">
+                                Resetar Senha
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            html += `</table>`;
+            document.getElementById("list").innerHTML = html;
+        }
+
+        
+        window.editar = function (id) {
+            alert(id)
+            window.location.href = `editar-usuario.html#id=${id}`;
+        };
+
+        window.excluir = async function (id) {
+            const ok = confirm("Tem certeza que deseja excluir este usuário?");
+            if (!ok) return;
+
+            const res = await deleteUser(id);
+
+            if (!res || !res.ok) {
+                alert("Erro ao excluir usuário");
+                return;
+            }
+
+            alert("Usuário excluído com sucesso!");
+            loadUsers();
+        };
+
+
+        window.resetarSenha = async function (matricula) {
+            const ok = confirm(
+                `Deseja resetar a senha da matrícula ${matricula}?`
+            );
+            if (!ok) return;
+
+ 
+            const res = await resetPassword(matricula);
+
+
+            alert("Senha resetada com sucesso!");
+        };
+
+        loadUsers();
+    </script>
+</body>
+</html>

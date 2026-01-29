@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resetar Senha de Usuário</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/resetar-senha.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <!-- sidebar vazia, sempre fora de tudo -->
+    </nav>
+
+    <main>
+        <div class="content">
+            <h1>Resetar Senha de Usuário</h1>
+
+            <a href="../dashboard.html">Início</a>
+            <a href="">Voltar</a>
+
+            <form>
+                <input type="number" name="matricula" id="matricula" placeholder="Matrícula">
+                <input type="submit" value="Resetar">
+            </form>
+        </div>
+
+        <footer>
+            <p>© 2026 — criado por <span style="font-weight: bold;">?</span></p>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/config.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script type="module" src="../api/auth.js"></script>
+    <script>
+        // EVENTO DO FORM
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const matricula = document.getElementById("matricula").value.trim();
+
+            if (!matricula) {
+                alert("Informe a matrícula!");
+                return;
+            }
+
+            resetPassword(matricula);
+        });
+    </script>
+</body>
+</html>
