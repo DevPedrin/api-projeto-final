@@ -30,3 +30,7 @@ docker compose up --build
 - **Front-end:** http://localhost:8080  
 - **API:** http://localhost:3000  
 - **Banco de Dados (PostgreSQL):** localhost:5432 
+
+Usuario padrão
+- Matricula: **0005**
+- Senha: **Mudar@1234**
